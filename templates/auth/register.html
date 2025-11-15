@@ -4,17 +4,18 @@
 <section class="auth-form">
     <h2>Register</h2>
     <form method="POST">
+        {{ form.hidden_tag() }}
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        {{ form.username() }}
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        {{ form.email() }}
 
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        {{ form.password() }}
 
-        <button type="submit" class="button">Register</button>
+        {{ form.recaptcha }}
+        {{ form.submit(class="button") }}
     </form>
-    <p>Already have an account? <a href="{{ url_for('login') }}">Log in</a>.</p>
 </section>
 {% endblock %}
