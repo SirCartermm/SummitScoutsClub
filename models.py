@@ -21,3 +21,12 @@ class Inquiry(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     service = db.Column(db.String(50), nullable=False)
     message = db.Column(db.Text, nullable=False)
+
+class Log(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    action = db.Column(db.String(100), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    ip_address = db.Column(db.String(50))
+
+    user = db.relationship('User', backref='logs')

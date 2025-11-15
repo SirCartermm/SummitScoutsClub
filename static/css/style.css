@@ -68,3 +68,20 @@ nav a {
     border: 1px solid #ddd;
     border-radius: 4px;
 }
+
+.admin-dashboard table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.admin-dashboard th, .admin-dashboard td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.admin-dashboard th {
+    background-color: #0056b3;
+    color: white;
+}
