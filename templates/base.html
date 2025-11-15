@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>George Yachts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>GEORGE YACHTS</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('charter') }}">Yacht Charter</a></li>
+                <li><a href="{{ url_for('flight') }}">Private Flight</a></li>
+                <li><a href="{{ url_for('buy_yacht') }}">Buy a Yacht</a></li>
+                <li><a href="{{ url_for('vip_transfers') }}">VIP Transfers</a></li>
+                <li><a href="{{ url_for('villas') }}">Villas & Real Estate</a></li>
+                <li><a href="{{ url_for('itineraries') }}">Signature Itineraries</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2025 George Yachts. All rights reserved.</p>
+    </footer>
+</body>
+</html>
