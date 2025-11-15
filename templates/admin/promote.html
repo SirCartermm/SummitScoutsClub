@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="admin-form">
+    <h2>Manage User: {{ user.username }}</h2>
+    <p>Current Role: {% if user.is_admin %}Admin{% else %}User{% endif %}</p>
+    <form method="POST">
+        <button type="submit" class="button">
+            {% if user.is_admin %}Demote to User{% else %}Promote to Admin{% endif %}
+        </button>
+    </form>
+</section>
+{% endblock %}
