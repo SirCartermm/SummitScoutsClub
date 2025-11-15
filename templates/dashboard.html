@@ -1,17 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="dashboard">
-    <h2>Welcome, {{ current_user.username }}!</h2>
-    <h3>Your Inquiries:</h3>
-    {% if inquiries %}
-        <ul>
-            {% for inquiry in inquiries %}
-                <li>{{ inquiry.service }}: {{ inquiry.message }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No inquiries yet. <a href="{{ url_for('contact') }}">Submit one now!</a></p>
-    {% endif %}
+<section class="admin-dashboard">
+    <h2>Admin Dashboard</h2>
+    <h3>Users</h3>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{% if user.is_admin %}Admin{% else %}User{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3>Inquiries</h3>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Service</th>
+            <th>Message</th>
+        </tr>
+        {% for inquiry in inquiries %}
+        <tr>
+            <td>{{ inquiry.user.username }}</td>
+            <td>{{ inquiry.service }}</td>
+            <td>{{ inquiry.message }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </section>
 {% endblock %}
