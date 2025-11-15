@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="service">
+    <h2>Yacht Charter</h2>
+    <p>Tailor-made charters across Greece & the Med.</p>
+    <div class="options">
+        <h3>Popular Destinations:</h3>
+        <ul>
+            <li>Cyclades</li>
+            <li>Ionian</li>
+            <li>Mediterranean</li>
+        </ul>
+    </div>
+    <a href="{{ url_for('contact') }}" class="button">Start Your Charter</a>
+</section>
+{% endblock %}
