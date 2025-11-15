@@ -30,3 +30,16 @@ class Log(db.Model):
     ip_address = db.Column(db.String(50))
 
     user = db.relationship('User', backref='logs')
+
+
+class Booking(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    service = db.Column(db.String(100), nullable=False)  # e.g., "Yacht Charter"
+    amount = db.Column(db.Integer, nullable=False)       # Amount in cents
+    currency = db.Column(db.String(3), default='usd')
+    stripe_payment_id = db.Column(db.String(100), unique=True)
+    status = db.Column(db.String(20), default='pending')
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+    user = db.relationship('User', backref='bookings')
